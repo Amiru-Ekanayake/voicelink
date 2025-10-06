@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import 'flowbite/dist/flowbite.css';
+
 
 @layer base {
   body {
