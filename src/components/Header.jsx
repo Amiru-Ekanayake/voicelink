@@ -52,7 +52,7 @@ export default function Header() {
           <a href="#" className={`${navItemClass} block`}>Track Issues</a>
           <a href="#" className={`${navItemClass} block`}>User Portal</a>
           <a href="#" className={`${navItemClass} block`}>Manager</a>
-          <button className="w-full text-left mt-2 px-3 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-150 shadow-md">
+          <button className="w-full text-left mt-2 px-3 py-2 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition duration-150 shadow-md">
             Admin Portal
           </button>
         </div>
