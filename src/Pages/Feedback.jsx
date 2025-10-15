@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { User, Mail, Camera, Video, MessageSquare } from 'lucide-react';
 
-// Custom Toggle Switch Component
+
 const ToggleSwitch = ({ isChecked, onToggle, label }) => (
   <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-200">
     <div className="flex flex-col">

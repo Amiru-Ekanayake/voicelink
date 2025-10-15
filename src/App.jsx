@@ -8,13 +8,15 @@ import CtaSection from "./Pages/Home/CTA";
 import StatsSection from "./Pages/Home/Stats";
 import FooterSection from "./components/Footer";
 import Feedback from "./Pages/Feedback";
+import UserDashboard from "./Pages/UserDash/Userdash";
+
 
 function App() {
   return (
     <Router>
       <Header />
       <Routes>
-        {/* 🏠 Home Page */}
+        {/* Home Page */}
         <Route
           path="/"
           element={
@@ -35,8 +37,13 @@ function App() {
           }
         />
 
-        {/* 📝 Feedback Page */}
+        {/* Feedback Page */}
         <Route path="/feedback" element={<Feedback />} />
+        
+        {/* User Dashboard Page */}
+        <Route path="/user-dashboard" element={<UserDashboard />} />
+
+
       </Routes>
     </Router>
   );
