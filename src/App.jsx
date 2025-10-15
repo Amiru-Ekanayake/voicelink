@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import Hero from "./components/Home/Hero";
+import Hero from "./Pages/Home/Hero";
 import Cards from "./components/Cards/Cards";
 import BottomNav from "./components/BottomNav";
-import FeaturesSection from "./components/Home/Feature";
-import CtaSection from "./components/Home/CTA";
-import StatsSection from "./components/Home/Stats";
+import FeaturesSection from "./Pages/Home/Feature";
+import CtaSection from "./Pages/Home/CTA";
+import StatsSection from "./Pages/Home/Stats";
 import FooterSection from "./components/Footer";
-import Feedback from "./components/Pages/Feedback";
+import Feedback from "./Pages/Feedback";
 
 function App() {
   return (

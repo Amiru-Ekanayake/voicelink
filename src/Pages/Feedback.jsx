@@ -43,9 +43,8 @@ const PRIORITIES = [
   { value: 'high', label: 'High Priority: Critical safety/service issue' },
 ];
 
-// Main Feedback Form Component
 export default function FeedbackForm() {
-  // Initialize form state
+
   const [formData, setFormData] = useState({
     issueTitle: '',
     category: '',
