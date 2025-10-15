@@ -1,12 +1,8 @@
 import React from 'react';
 import { MessageSquare, Zap, BarChart2, Shield, Users, Star } from 'lucide-react';
-// REVERTED PATH: Removing the .jsx extension as this often resolves "Could not resolve" 
-// errors when the bundler expects automatic extension resolution.
 import { FeatureCard } from './UtilityComponents'; 
 
-/**
- * Renders the "Why Choose VoiceLink?" section with feature cards.
- */
+
 export default function FeaturesSection() {
   const features = [
     {
