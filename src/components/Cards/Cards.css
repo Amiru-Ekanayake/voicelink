@@ -1,0 +1,25 @@
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+  gap: 1.5rem; /* space between cards */
+  justify-items: center; /* center each card */
+  margin: 2rem auto;
+  max-width: 1200px; /* optional, controls total width */
+}
+
+.card-item {
+  width: 100%;
+  max-width: 260px; /* make each card a consistent width */
+}
+
+@media (max-width: 1024px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}

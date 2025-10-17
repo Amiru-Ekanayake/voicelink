@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Hero from "./Pages/Home/Hero";
+import Cards from "./components/Cards/Cards";
+import BottomNav from "./components/BottomNav";
+import FeaturesSection from "./Pages/Home/Feature";
+import CtaSection from "./Pages/Home/CTA";
+import StatsSection from "./Pages/Home/Stats";
+import FooterSection from "./components/Footer";
+import Feedback from "./Pages/Feedback";
+import UserDashboard from "./Pages/UserDash/Userdash";
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <Header />
+      <Routes>
+        {/* Home Page */}
+        <Route
+          path="/"
+          element={
+            <main>
+              <Hero />
+              <img
+                className="absolute top-0 right-0 opacity-100 -z-1"
+                src="/gradient.png"
+                alt="Gradient-img"
+              />
+              <div className="h-0 w-[150rem] absolute top-[20%] right-[-5%] shadow-[0_0_900px_20px_#0022ff] -rotate-[0] -z-10"></div>
+              <FeaturesSection />
+              <CtaSection />
+              <StatsSection />
+              <BottomNav />
+              <FooterSection />
+            </main>
+          }
+        />
+
+        {/* Feedback Page */}
+        <Route path="/feedback" element={<Feedback />} />
+        
+        {/* User Dashboard Page */}
+        <Route path="/user-dashboard" element={<UserDashboard />} />
+
+
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
