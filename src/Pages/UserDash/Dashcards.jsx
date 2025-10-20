@@ -11,7 +11,7 @@ const COMMUNITY_STATS = [
 
 export default function StatsCards() {
   return (
-    <div className="grid grid-cols-5 md:grid-cols-5 gap-4 mt-6">
+    <div className="grid grid-cols-5 md:grid-cols-5 gap-4 mt-6 px-9">
       {COMMUNITY_STATS.map((stat, index) => (
         <div 
           key={index} 

@@ -8,9 +8,9 @@ export default function UserDashboard() {
   return (
     <div className="min-h-screen bg-gray-100">
       <Dashheader />
-      <Dashnavi />
-
+      <div className="hidden md:block">
       <Dashcards />
+      </div>
       <Dashfeed />
 
     </div>

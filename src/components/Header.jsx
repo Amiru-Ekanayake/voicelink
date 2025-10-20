@@ -27,9 +27,9 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-2 xl:space-x-4 items-center">
             <Link to="/feedback" className={navItemClass}>Submit Feedback</Link>
-            <Link to="/" className={navItemClass}>Track Issues</Link>
+            <Link to="/track-feedback" className={navItemClass}>Track Issues</Link>
             <Link to="/user-dashboard" className={navItemClass}>User Portal</Link>
-            <Link to="/" className={navItemClass}>Manager</Link>
+            <Link to="/login" className={navItemClass}>Manager</Link>
             <button className="ml-4 px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-150 shadow-md">
               Admin Portal
             </button>
@@ -52,7 +52,7 @@ export default function Header() {
         <div className="lg:hidden px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
           <Link to="/feedback" className={`${navItemClass} block`}>Submit Feedback</Link>
           <Link to="/track-issues" className={`${navItemClass} block`}>Track Issues</Link>
-          <Link to="/user-dashboard" className={`${navItemClass} block`}>User Portal</Link>
+          <Link to="/login" className={`${navItemClass} block`}>Login</Link>
           <Link to="/manager" className={`${navItemClass} block`}>Manager</Link>
           <button className="w-full text-left mt-2 px-3 py-2 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition duration-150 shadow-md">
             Admin Portal
