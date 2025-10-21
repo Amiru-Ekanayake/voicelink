@@ -1,74 +1,64 @@
-import 'boxicons/css/boxicons.min.css';
-
-const Header = () => {
-        const toggleMobileMenu = () => {
-            const mobileMenu = document.getElementById('mobileMenu')
-
-            if(mobileMenu.classList.contains('hidden')){
-                mobileMenu.classList.remove('hidden');
-            }else{
-                mobileMenu.classList.add('hidden');
-            }
-            
-        }
-
-    return (
-    <header className="flex justify-between item-center py-4 px-4 lg:px-20">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-light m-0">
-        <img src = 'voice.png' alt='React-logo' className='inline h-10 md:h-12 lg:h-14 mr-2'/>
-        </h1>
-
-        {/*Desktop Navbar*/}
-        <nav className="hidden md:flex items-center gap-12">
-            <a className="text-base tracking-wider transition-colors hover:text-gray-300 z-50" href="#">
-               COMPANY 
-            </a>
-
-            <a className="text-base tracking-wider transition-colors hover:text-gray-300 z-50" href="#">
-               FEATURES 
-            </a>
-
-            <a className="text-base tracking-wider transition-colors hover:text-gray-300 z-50" href="#">
-               RESOURCES 
-            </a>
-
-            <a className="text-base tracking-wider transition-colors hover:text-gray-300 z-50" href="#">
-              DOCS 
-            </a>   
-        </nav>
-
-        <button className="hidden md:block bg-[#a7a7a7] text-black py-3 px-8 rounded-full border-none font-medium trasition-all duration-500 hover:bg-white cursor-pointer z-50 ">
-            SIGNIN
-        </button>
+import React, { useState } from 'react';
+import { Menu, X } from 'lucide-react'; 
+import { Link } from "react-router-dom";
 
 
-        <button onClick={toggleMobileMenu} className='md:hidden text-3xl p-2 z-50'>
-            <i class='bx bx-menu'></i>
-        </button>
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
 
-        {/*Mobile Navbar*/}
-        <div id='mobileMenu' className='hidden fixed top-16 bottom-0 right-0 left-0 p-5 md:hidden z-40 bg-black bg-opacity-70 backdrop-blur- md'>
-            <nav className='flex flex-col gap-6 items-center'>
-                <a className="text-base tracking-wider transition-colors hover:text-gray-300 z-50" href="#">
-               COMPANY 
-            </a>
 
-            <a className="text-base tracking-wider transition-colors hover:text-gray-300 z-50" href="#">
-               FEATURES 
-            </a>
+  const navItemClass = "text-gray-600 hover:text-blue-600 px-3 py-2 rounded-lg transition duration-150";
 
-            <a className="text-base tracking-wider transition-colors hover:text-gray-300 z-50" href="#">
-               RESOURCES 
-            </a>
+  return (
+    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-md">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
+          
+        
+          <div className="flex items-center space-x-2">
+            <img 
+              src="VoiceLink.png"   
+              alt="VoiceLink Logo"
+              className="h-10 w-auto object-contain"
+            />
+            <span className="text-xl font-bold text-gray-800">VoiceLink</span>
+          </div>
 
-            <a className="text-base tracking-wider transition-colors hover:text-gray-300 z-50" href="#">
-              DOCS 
-            </a>
-            </nav>
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex space-x-2 xl:space-x-4 items-center">
+            <Link to="/feedback" className={navItemClass}>Submit Feedback</Link>
+            <Link to="/track-feedback" className={navItemClass}>Track Issues</Link>
+            <Link to="/user-dashboard" className={navItemClass}>User Portal</Link>
+            <Link to="/login" className={navItemClass}>Manager</Link>
+            <button className="ml-4 px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-150 shadow-md">
+              Admin Portal
+            </button>
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <div className="lg:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
+      </div>
 
+      {/* Mobile Dropdown Menu */}
+      {isOpen && (
+        <div className="lg:hidden px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
+          <Link to="/feedback" className={`${navItemClass} block`}>Submit Feedback</Link>
+          <Link to="/track-issues" className={`${navItemClass} block`}>Track Issues</Link>
+          <Link to="/login" className={`${navItemClass} block`}>Login</Link>
+          <Link to="/manager" className={`${navItemClass} block`}>Manager</Link>
+          <button className="w-full text-left mt-2 px-3 py-2 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition duration-150 shadow-md">
+            Admin Portal
+          </button>
+        </div>
+      )}
     </header>
-  )
+  );
 }
-
-export default Header
