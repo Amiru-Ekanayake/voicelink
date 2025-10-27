@@ -14,6 +14,8 @@ import TrackFeed from "./Pages/Trackfeed";
 import Userheader from "./components/Userheader";
 import AchievementsPage from "./Pages/Achievements";
 import AdminDashboard from "./Pages/AdminDash/Admindash";
+import SignupPage from "./Pages/Signup";
+import LoginPage from "./Pages/Login";
 
 
 
@@ -37,7 +39,7 @@ function App() {
               <FeaturesSection />
               <CtaSection />
               <StatsSection />
-              <BottomNav />
+              {/* <BottomNav /> */}
               <FooterSection />
             </main>
           }
@@ -76,6 +78,10 @@ function App() {
         <Route path="/feedback" element={<Feedback />} />
 
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
+
+        <Route path="/signup" element={<SignupPage />} />
+        
+        <Route path="/login" element={<LoginPage />} />
         
 
 

@@ -36,16 +36,16 @@ export default function SignupPage() {
       <div className="w-full max-w-6xl bg-white rounded-2xl shadow-2xl overflow-hidden">
         <div className="flex flex-col lg:flex-row">
           {/* Left Side - Image */}
-          <div className="w-full lg:w-1/2 bg-gradient-to-br from-indigo-600 to-blue-700 p-8 lg:p-12 flex items-center justify-center order-2 lg:order-1">
-            <div className="max-w-md">
+          <div className="w-full lg:w-1/2 bg-gradient-to-br from-white-900 to-blue-000 p-8 lg:p-12 flex items-center justify-center order-2 lg:order-1 ">
+            <div className="max-w-md hidden lg:block">
               <img
-                src="https://i.imgur.com/8YqbP5x.png"
+                src="login2.png"
                 alt="Community Feedback Platform"
                 className="w-full h-auto rounded-2xl shadow-2xl"
               />
-              <div className="mt-8 text-white text-center">
+              <div className="mt-8 text-gray-800 text-center">
                 <h2 className="text-2xl font-bold mb-3">Join Our Community</h2>
-                <p className="text-blue-100">
+                <p className="text-gray-800">
                   Be part of something amazing. Share your voice and make a difference.
                 </p>
               </div>
@@ -193,7 +193,7 @@ export default function SignupPage() {
                   onClick={handleSubmit}
                   className={`w-full py-3 px-4 rounded-lg font-semibold text-white transition-all ${
                     role === 'admin'
-                      ? 'bg-indigo-600 hover:bg-indigo-700'
+                      ? 'bg-blue-600 hover:bg-blue-700'
                       : 'bg-blue-600 hover:bg-blue-700'
                   } focus:outline-none focus:ring-2 focus:ring-offset-2 ${
                     role === 'admin' ? 'focus:ring-indigo-500' : 'focus:ring-blue-500'
@@ -205,9 +205,9 @@ export default function SignupPage() {
 
               <p className="mt-8 text-center text-sm text-gray-600">
                 Already have an account?{' '}
-                <button className="text-blue-600 hover:text-blue-700 font-medium">
+                <a href="/login" className="text-blue-600 hover:text-blue-700 font-medium">
                   Sign in
-                </button>
+                </a>
               </p>
             </div>
           </div>

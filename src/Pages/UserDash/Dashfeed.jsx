@@ -31,7 +31,7 @@ const FeedbackCard = ({
       {/* Title */}
       <div className="flex items-center gap-2 mb-2">
         <h3 className="font-semibold text-gray-900">{title}</h3>
-        <span className="text-xs bg-gray-100 px-2 py-1 rounded">{id}</span>
+        <span className="text-xs bg-gray-300 px-2 py-1 rounded text-gray-900">{id}</span>
       </div>
 
       {/* Description */}
@@ -39,14 +39,14 @@ const FeedbackCard = ({
 
       {/* Tags */}
       <div className="flex gap-2 mb-3">
-        <span className="text-xs px-2 py-1 rounded bg-yellow-100 text-yellow-800">
+        <span className="text-xs px-2 py-1 rounded-full bg-yellow-100 text-yellow-800">
           {status}
         </span>
-        <span className="text-xs px-2 py-1 rounded bg-red-100 text-red-800">
+        <span className="text-xs px-2 py-1 rounded-full bg-red-100 text-red-800">
           {priority}
         </span>
         {anonymous && (
-          <span className="text-xs px-2 py-1 rounded bg-purple-100 text-purple-800">
+          <span className="text-xs px-2 py-1 rounded-full bg-purple-100 text-purple-800">
             Anonymous
           </span>
         )}

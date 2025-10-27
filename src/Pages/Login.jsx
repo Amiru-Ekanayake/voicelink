@@ -110,7 +110,7 @@ export default function LoginPage() {
                   type="submit"
                   className={`w-full py-3 px-4 rounded-lg font-semibold text-white transition-all ${
                     role === 'admin'
-                      ? 'bg-indigo-600 hover:bg-indigo-700'
+                      ? 'bg-blue-600 hover:bg-blue-700'
                       : 'bg-blue-600 hover:bg-blue-700'
                   } focus:outline-none focus:ring-2 focus:ring-offset-2 ${
                     role === 'admin' ? 'focus:ring-indigo-500' : 'focus:ring-blue-500'
@@ -122,14 +122,14 @@ export default function LoginPage() {
 
               <p className="mt-8 text-center text-sm text-gray-600">
                 Don't have an account?{' '}
-                <a href="#" className="text-blue-600 hover:text-blue-700 font-medium">
+                <a href="/signup" className="text-blue-600 hover:text-blue-700 font-medium">
                   Sign up
                 </a>
               </p>
             </div>
           </div>
 
-          {/* Right Side - Image */}
+          {/* Image */}
           <div className="w-full lg:w-1/2 bg-gradient-to-br from-blue-600 to-indigo-700 p-8 lg:p-12 flex items-center justify-center hidden lg:block">
             <div className="max-w-md">
               <img
