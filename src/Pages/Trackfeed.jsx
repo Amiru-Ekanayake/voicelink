@@ -69,13 +69,13 @@ const TrackFeed = () => {
                 <div className="bg-green-50 p-6 rounded-xl mt-6 border-l-4 border-green-500 shadow-inner">
                     <h3 className="text-xl font-semibold text-green-700">Tracking Status: Resolved</h3>
                     <p className="text-sm text-green-600 mt-1">Feedback ID: <span className="font-mono bg-green-200 px-1 rounded">FB001</span> (Campus Wi-Fi issues)</p>
-                    <div className="mt-4 flex flex-col md:flex-row justify-between text-sm">
+                    <div className="mt-4 flex flex-col md:flex-row justify-between text-sm text-gray-600">
                         <p><strong>Submitted:</strong> 1/15/2024</p>
                         <p><strong>Last Update:</strong> 1/18/2024</p>
                         <p><strong>Department:</strong> IT Services</p>
                     </div>
                     {/* Simplified Timeline */}
-                    <div className="mt-4 pt-4 border-t border-green-200">
+                    <div className="mt-4 pt- border-t border-green-200">
                         <p className="font-medium text-green-700">Timeline:</p>
                         <ul className="list-disc list-inside text-sm text-green-600">
                             <li>1/15/2024: Received and assigned to John Tech.</li>
@@ -104,7 +104,7 @@ const TrackFeed = () => {
                 {renderTrackingResult()}
 
                 {/* 1. Find Your Feedback Card */}
-                <div className="bg-white p-6 rounded-xl shadow-lg mb-6">
+                <div className="bg-white p-6 rounded-xl shadow-lg mb-6 ">
                     <h2 className="text-xl font-semibold text-gray-800">Find Your Feedback</h2>
                     <p className="mt-1 text-gray-600">
                         Use the feedback ID that was provided when you submitted your feedback.
