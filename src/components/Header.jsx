@@ -14,15 +14,16 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex justify-between items-center h-20">
           
-        
-          <div className="flex items-center space-x-2">
+          
+          {/* Logo and Text wrapped in a Link to the home page */}
+          <Link to="/feedback" className={navItemClass}>
             <img 
-              src="VoiceLink.png"   
-              alt="VoiceLink Logo"
+              src="VoiceLink.png"  
+              alt="VoiceLink Logo - Go to home"
               className="h-10 w-auto object-contain"
             />
             <span className="text-xl font-bold text-gray-800">VoiceLink</span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-2 xl:space-x-4 items-center">
