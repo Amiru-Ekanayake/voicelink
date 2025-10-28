@@ -16,7 +16,7 @@ const MockHeader = ({ onNavigate }) => (
     </div>
 );
 
-const TrackFeed = () => {zk
+const TrackFeed = () => {
     const [feedbackId, setFeedbackId] = useState('');
     const [status, setStatus] = useState(null); // 'loading', 'found', 'not_found'
 
