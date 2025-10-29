@@ -14,6 +14,8 @@ import TrackFeed from "./Pages/Trackfeed";
 import Userheader from "./components/Userheader";
 import AchievementsPage from "./Pages/Achievements";
 import AdminDashboard from "./Pages/AdminDash/Admindash";
+import SignupPage from "./Pages/Signup";
+import LoginPage from "./Pages/Login";
 
 
 
@@ -37,7 +39,7 @@ function App() {
               <FeaturesSection />
               <CtaSection />
               <StatsSection />
-              <BottomNav />
+              {/* <BottomNav /> */}
               <FooterSection />
             </main>
           }
@@ -55,27 +57,15 @@ function App() {
 
         <Route path="/achievements" element={<AchievementsPage />} />
 
-        <Route path="/" element={
-          <main>
-            <Hero />
-            <img
-              className="absolute top-0 right-0 opacity-100 -z-1"
-              src="/gradient.png"
-              alt="Gradient-img"
-            />
-            <div className="h-0 w-[150rem] absolute top-[20%] right-[-5%] shadow-[0_0_900px_20px_#0022ff] -rotate-[0] -z-10"></div>
-            <FeaturesSection />
-            <CtaSection />
-            <StatsSection />
-            <BottomNav />
-            <FooterSection />
-           </main>
-        } />
         <Route path="/achievements" element={<AchievementsPage />} />
 
         <Route path="/feedback" element={<Feedback />} />
 
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
+
+        <Route path="/signup" element={<SignupPage />} />
+        
+        <Route path="/login" element={<LoginPage />} />
         
 
 
