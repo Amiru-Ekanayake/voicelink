@@ -143,7 +143,7 @@ export default function FeedbackForm() {
                   value={formData.issueTitle}
                   onChange={handleChange}
                   placeholder="Brief description of your issue..."
-                  className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                  className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 transition duration-150 text-gray-900"
                 />
               </div>
 
@@ -196,7 +196,7 @@ export default function FeedbackForm() {
                   value={formData.detailedDescription}
                   onChange={handleChange}
                   placeholder="Please provide specific details about the issue, including when it occurred, what you expected to happen, and any steps to reproduce the problem..."
-                  className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                  className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 transition duration-150 text-gray-900"
                 />
               </div>
             </div>
@@ -253,7 +253,7 @@ export default function FeedbackForm() {
                       value={formData.fullName}
                       onChange={handleChange}
                       placeholder="Your full name"
-                      className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                      className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 transition duration-150 text-gray-900"
                     />
                   </div>
 
@@ -268,7 +268,7 @@ export default function FeedbackForm() {
                       value={formData.emailAddress}
                       onChange={handleChange}
                       placeholder="your.email@example.com"
-                      className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                      className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 transition duration-150 text-gray-900"
                     />
                   </div>
                 </div>
