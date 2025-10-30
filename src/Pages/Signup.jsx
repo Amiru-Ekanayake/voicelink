@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { User, Shield, Mail, Lock, UserCircle } from 'lucide-react';
 
 export default function SignupPage() {
-  const [role, setRole] = useState('user');
+  const [role, setRole] = useState('User');
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -10,6 +10,9 @@ export default function SignupPage() {
     confirmPassword: ''
   });
   const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const handleInputChange = (e) => {
     setFormData({
@@ -18,17 +21,69 @@ export default function SignupPage() {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setSuccess('');
+
+    // Validation
     if (formData.password !== formData.confirmPassword) {
-      alert('Passwords do not match!');
+      setError('Passwords do not match!');
       return;
     }
     if (!agreedToTerms) {
-      alert('Please agree to the terms and conditions');
+      setError('Please agree to the terms and conditions');
       return;
     }
-    console.log('Signup attempt:', { ...formData, role });
-    // Add your signup logic here
+    if (formData.password.length < 6) {
+      setError('Password must be at least 6 characters long');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await fetch('http://localhost:3000/api/users/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          email: formData.email,
+          password: formData.password,
+          role: role
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSuccess('Account created successfully! Redirecting to login...');
+        console.log('Signup successful:', data);
+        
+        // Clear form
+        setFormData({
+          fullName: '',
+          email: '',
+          password: '',
+          confirmPassword: ''
+        });
+        setAgreedToTerms(false);
+
+        // Redirect to login after 2 seconds
+        setTimeout(() => {
+          window.location.href = '/login';
+        }, 2000);
+      } else {
+        setError(data.message || 'Signup failed. Please try again.');
+      }
+    } catch (err) {
+      console.error('Signup error:', err);
+      setError('Unable to connect to server. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -36,7 +91,7 @@ export default function SignupPage() {
       <div className="w-full max-w-6xl bg-white rounded-2xl shadow-2xl overflow-hidden">
         <div className="flex flex-col lg:flex-row">
           {/* Left Side - Image */}
-          <div className="w-full lg:w-1/2 bg-gradient-to-br from-white-900 to-blue-000 p-8 lg:p-12 flex items-center justify-center order-2 lg:order-1 ">
+          <div className="w-full lg:w-1/2 bg-gradient-to-br from-white-900 to-blue-000 p-8 lg:p-12 flex items-center justify-center order-2 lg:order-1">
             <div className="max-w-md hidden lg:block">
               <img
                 src="login2.png"
@@ -62,7 +117,7 @@ export default function SignupPage() {
                 Sign up to get started with the community feedback platform
               </p>
 
-              <div className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Role Selection */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-3">
@@ -71,30 +126,46 @@ export default function SignupPage() {
                   <div className="grid grid-cols-2 gap-4">
                     <button
                       type="button"
-                      onClick={() => setRole('user')}
+                      onClick={() => setRole('User')}
+                      disabled={loading}
                       className={`flex items-center justify-center gap-2 p-4 rounded-lg border-2 transition-all ${
-                        role === 'user'
+                        role === 'User'
                           ? 'border-blue-500 bg-blue-50 text-blue-700'
                           : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300'
-                      }`}
+                      } ${loading ? 'cursor-not-allowed opacity-50' : ''}`}
                     >
                       <User className="w-5 h-5" />
                       <span className="font-medium">User</span>
                     </button>
                     <button
                       type="button"
-                      onClick={() => setRole('admin')}
+                      onClick={() => setRole('Admin')}
+                      disabled={loading}
                       className={`flex items-center justify-center gap-2 p-4 rounded-lg border-2 transition-all ${
-                        role === 'admin'
+                        role === 'Admin'
                           ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
                           : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300'
-                      }`}
+                      } ${loading ? 'cursor-not-allowed opacity-50' : ''}`}
                     >
                       <Shield className="w-5 h-5" />
                       <span className="font-medium">Admin</span>
                     </button>
                   </div>
                 </div>
+
+                {/* Error Message */}
+                {error && (
+                  <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+                    {error}
+                  </div>
+                )}
+
+                {/* Success Message */}
+                {success && (
+                  <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg">
+                    {success}
+                  </div>
+                )}
 
                 {/* Full Name Input */}
                 <div>
@@ -110,6 +181,8 @@ export default function SignupPage() {
                       onChange={handleInputChange}
                       className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
                       placeholder="Enter your full name"
+                      required
+                      disabled={loading}
                     />
                   </div>
                 </div>
@@ -128,6 +201,8 @@ export default function SignupPage() {
                       onChange={handleInputChange}
                       className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
                       placeholder="Enter your email"
+                      required
+                      disabled={loading}
                     />
                   </div>
                 </div>
@@ -146,6 +221,9 @@ export default function SignupPage() {
                       onChange={handleInputChange}
                       className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
                       placeholder="Create a password"
+                      required
+                      minLength={6}
+                      disabled={loading}
                     />
                   </div>
                 </div>
@@ -164,6 +242,8 @@ export default function SignupPage() {
                       onChange={handleInputChange}
                       className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
                       placeholder="Confirm your password"
+                      required
+                      disabled={loading}
                     />
                   </div>
                 </div>
@@ -175,14 +255,15 @@ export default function SignupPage() {
                     checked={agreedToTerms}
                     onChange={(e) => setAgreedToTerms(e.target.checked)}
                     className="w-4 h-4 mt-1 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                    disabled={loading}
                   />
                   <label className="ml-2 text-sm text-gray-600">
                     I agree to the{' '}
-                    <button className="text-blue-600 hover:text-blue-700 font-medium">
+                    <button type="button" className="text-blue-600 hover:text-blue-700 font-medium">
                       Terms and Conditions
                     </button>{' '}
                     and{' '}
-                    <button className="text-blue-600 hover:text-blue-700 font-medium">
+                    <button type="button" className="text-blue-600 hover:text-blue-700 font-medium">
                       Privacy Policy
                     </button>
                   </label>
@@ -190,18 +271,17 @@ export default function SignupPage() {
 
                 {/* Submit Button */}
                 <button
-                  onClick={handleSubmit}
+                  type="submit"
+                  disabled={loading}
                   className={`w-full py-3 px-4 rounded-lg font-semibold text-white transition-all ${
-                    role === 'admin'
-                      ? 'bg-blue-600 hover:bg-blue-700'
+                    loading
+                      ? 'bg-gray-400 cursor-not-allowed'
                       : 'bg-blue-600 hover:bg-blue-700'
-                  } focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-                    role === 'admin' ? 'focus:ring-indigo-500' : 'focus:ring-blue-500'
-                  }`}
+                  } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500`}
                 >
-                  Create {role === 'admin' ? 'Admin' : 'User'} Account
+                  {loading ? 'Creating Account...' : `Create ${role} Account`}
                 </button>
-              </div>
+              </form>
 
               <p className="mt-8 text-center text-sm text-gray-600">
                 Already have an account?{' '}
