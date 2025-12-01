@@ -31,7 +31,7 @@ export default function Header() {
               <Link to="/feedback" className={navItemClass}>Submit Feedback</Link>
               <Link to="/track-feedback" className={navItemClass}>Track Feedbacks</Link>
               <Link to="/user-dashboard" className={navItemClass}>User Portal</Link>
-              <Link to="/admin-dashboard" className={navItemClass}>Admin Portal</Link>
+              {/* <Link to="/admin-dashboard" className={navItemClass}>Admin Portal</Link> */}
               <UserButton appearance={{ elements: { avatarBox: "w-9 h-9" } }} />
             </SignedIn>
             <SignedOut>
@@ -62,7 +62,7 @@ export default function Header() {
             <Link to="/feedback" className={`${navItemClass} block`}>Submit Feedback</Link>
             <Link to="/track-feedback" className={`${navItemClass} block`}>Track Feedbacks</Link>
             <Link to="/user-dashboard" className={`${navItemClass} block`}>User Portal</Link>
-            <Link to="/admin-dashboard" className={`${navItemClass} block`}>Admin Portal</Link>
+            {/* <Link to="/admin-dashboard" className={`${navItemClass} block`}>Admin Portal</Link> */}
             <div className="px-3 py-2">
               <UserButton appearance={{ elements: { avatarBox: "w-9 h-9" } }} />
             </div>
